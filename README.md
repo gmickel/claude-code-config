@@ -78,7 +78,7 @@ Both use `rp-cli` to build context and send to GPT-5.2 High for deep analysis.
 | Skill | Description |
 |-------|-------------|
 | [oracle](https://github.com/steipete/oracle) | Bundle prompts + files for second-model review |
-| [convex](https://convex.dev) | Convex backend patterns — based on Convex's [chef prompt](https://stack.convex.dev/ai-chat-using-convex), customized to make Convex dev less painful |
+| [convex](https://convex.dev) | Convex backend patterns — based on [Convex Chef](https://chef.convex.dev), customized to make Convex dev less painful |
 | [sheets-cli](https://github.com/gmickel/sheets-cli) | Google Sheets automation |
 | [outlookctl](https://github.com/gmickel/outlookctl) | Outlook calendar/email automation |
 
