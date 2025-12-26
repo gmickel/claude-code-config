@@ -92,7 +92,7 @@ Both use `rp-cli` to build context and send to GPT-5.2 High for deep analysis.
 
 ## Command Chaining
 
-Chain commands for autonomous plan → review → implement loops:
+Claude Code lets you chain multiple slash commands in a single prompt. Combine these review commands with planning plugins like [Flow](#related) or [compound-engineering](#related) for autonomous plan → review → fix loops:
 
 ```bash
 # Plan with research, review via RepoPrompt, iterate until approved
@@ -102,7 +102,7 @@ Chain commands for autonomous plan → review → implement loops:
 /flow:work plans/add-oauth-login.md then review using /rp-impl-review and fix until approved
 ```
 
-Claude will autonomously iterate:
+Claude autonomously iterates until done:
 
 ```
 Plan Review Complete: SHIP
