@@ -1,0 +1,20 @@
+# Ignore everything
+*
+
+# Whitelist
+!.gitignore
+!CLAUDE.md
+!README.md
+
+!skills/
+!skills/**
+
+!commands/
+!commands/**
+
+!agents/
+!agents/**
+
+!install.sh
+!install.ps1
+!install-remote.sh
