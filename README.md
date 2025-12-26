@@ -137,6 +137,16 @@ npm install -g @nicepkg/rp-cli
 
 ---
 
+## Compatibility
+
+These skills, commands, and agents follow common conventions and should work with other AI coding tools:
+
+- [OpenAI Codex](https://developers.openai.com/codex/skills/create-skill/) — [skills](https://developers.openai.com/codex/skills/create-skill/), [commands](https://developers.openai.com/codex/guides/slash-commands/)
+- [OpenCode](https://opencode.ai) — [skills](https://opencode.ai/docs/skills/), [commands](https://opencode.ai/docs/commands/), [agents](https://opencode.ai/docs/agents/)
+- [Factory](https://docs.factory.ai/cli/configuration/skills) — skills
+
+---
+
 ## Credits
 
 - [@pvncher](https://x.com/pvncher) — [RepoPrompt](https://repoprompt.com)
