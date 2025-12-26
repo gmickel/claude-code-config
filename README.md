@@ -92,18 +92,22 @@ Both use `rp-cli` to build context and send to GPT-5.2 High for deep analysis.
 
 ## Command Chaining
 
-Chain commands in a single prompt for autonomous workflows:
+Chain commands for autonomous plan → review → implement loops:
 
-```
-/workflows:plan [feature] then review via /rp-plan-review and implement improvements
+```bash
+# Plan with research, review via RepoPrompt, iterate until approved
+/flow:plan Add OAuth login then review using /rp-plan-review and fix until approved
+
+# Execute plan, review implementation, iterate until ship-ready
+/flow:work plans/add-oauth-login.md then review using /rp-impl-review and fix until approved
 ```
 
-Claude will plan → review → fix → re-review → iterate until done:
+Claude will autonomously iterate:
 
 ```
 Plan Review Complete: SHIP
 
-Plan: plans/t8-search-commands.md (v3-final)
+Plan: plans/add-oauth-login.md (v3-final)
 Issues Addressed: v1 (11 issues), v2 (5 issues) — all resolved
 Ready to implement.
 ```
@@ -122,7 +126,13 @@ npm install -g @nicepkg/rp-cli
 
 ## Related
 
-**[compound-engineering](https://github.com/EveryInc/compound-engineering-plugin)** — Multi-agent workflows, parallel processing
+**[Flow](https://mickel.tech/apps/flow)** — Lightweight plan/work workflow with research agents, pairs well with `/rp-*` commands
+```bash
+/plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
+/plugin install flow
+```
+
+**[compound-engineering](https://github.com/EveryInc/compound-engineering-plugin)** — Full-featured multi-agent workflows, parallel processing, specialized reviewers
 ```bash
 /plugin marketplace add every-inc/compound-engineering
 ```
