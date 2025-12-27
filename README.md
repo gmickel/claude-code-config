@@ -4,8 +4,7 @@
 >
 > ```bash
 > /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
-> /plugin install rp-plan-review
-> /plugin install rp-impl-review
+> /plugin install flow
 > ```
 >
 > **Why switch?** Marketplace versions use **progressive disclosure** — context loaded incrementally, saving thousands of tokens per session.
