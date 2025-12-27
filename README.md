@@ -131,11 +131,7 @@ Ready to implement.
 
 ## Prerequisites
 
-**rp-cli** — Most commands depend on [RepoPrompt CLI](https://repoprompt.com/docs#s=rp-cli&ss=cli-guide):
-
-```bash
-npm install -g @nicepkg/rp-cli
-```
+**rp-cli** — Most commands depend on [RepoPrompt CLI](https://repoprompt.com/docs#s=rp-cli&ss=cli-guide), bundled with RepoPrompt.
 
 ---
 
