@@ -1,5 +1,19 @@
 # claude-code-config
 
+> **⚠️ `/rp-plan-review` and `/rp-impl-review` have moved to the Marketplace**
+>
+> ```bash
+> /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
+> /plugin install rp-plan-review
+> /plugin install rp-impl-review
+> ```
+>
+> **Why switch?** Marketplace versions use **progressive disclosure** — context loaded incrementally, saving thousands of tokens per session.
+>
+> Legacy versions still available in [`legacy/commands/`](legacy/commands/).
+
+---
+
 My Claude Code setup: skills, commands, and agents for fast, high-quality development.
 
 ## Installation
@@ -63,10 +77,11 @@ The key: delegate heavy work to external tools with full codebase context, keep 
 
 | Command | Description |
 |---------|-------------|
-| `/rp-plan-review` | Carmack-level plan review via RepoPrompt |
-| `/rp-impl-review` | Carmack-level code review of current branch |
+| `/rp-plan-review` | Carmack-level plan review via RepoPrompt — **[moved to marketplace](#)** |
+| `/rp-impl-review` | Carmack-level code review of current branch — **[moved to marketplace](#)** |
+| `/pseo` | Programmatic SEO improvements |
 
-Both use `rp-cli` to build context and send to GPT-5.2 High for deep analysis.
+Review commands use `rp-cli` to build context and send to GPT-5.2 High for deep analysis.
 
 ```bash
 /rp-plan-review docs/plan/auth-refactor.md focus on security

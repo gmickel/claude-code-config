@@ -15,6 +15,9 @@
 !agents/
 !agents/**
 
+!legacy/
+!legacy/**
+
 !install.sh
 !install.ps1
 !install-remote.sh
