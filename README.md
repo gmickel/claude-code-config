@@ -1,6 +1,6 @@
 # claude-code-config
 
-> **⚠️ `/rp-plan-review` and `/rp-impl-review` have moved to [gmickel-claude-marketplace](https://github.com/gmickel/gmickel-claude-marketplace)**
+> **⚠️ `/rp-plan-review` and `/rp-impl-review` have moved to [Flow](https://mickel.tech/apps/flow) ([repo](https://github.com/gmickel/gmickel-claude-marketplace))**
 >
 > ```bash
 > /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
