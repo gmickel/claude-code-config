@@ -1,18 +1,22 @@
 # claude-code-config
 
-> ## 🚀 Migrated to [Flow](https://mickel.tech/apps/flow)
+> ## 🚀 Migrated to Flow — [GitHub](https://github.com/gmickel/gmickel-claude-marketplace) · [Website](https://mickel.tech/apps/flow)
 >
-> **All commands and agents from this repo are now part of the Flow plugin** — a complete plan → work → review workflow with 4 commands, 5 agents, 5 skills.
+> **All commands and agents from this repo are now part of Flow** — plan first, work second. 4 commands, 6 agents, 6 skills.
+>
+> Most agent failures aren't capability—they're process: coding before understanding the codebase, reinventing existing patterns, forgetting the plan mid-implementation. Flow fixes this with structured research, explicit plan reuse, and plan re-read between tasks.
 >
 > ```bash
 > /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
 > /plugin install flow
 > ```
 >
-> **Why switch?**
-> - **Progressive disclosure** — only ~100 tokens at startup, full logic loads on-demand
-> - **More features** — parallel research agents, gap analysis, Beads integration, auto-reviews
-> - **Better chaining** — `/flow:plan` → `/flow:work` handles everything including reviews
+> **Highlights:**
+> - **Parallel research agents** — repo-scout (fast) or context-scout (deep via rp-cli)
+> - **Gap analysis** — catches edge cases and missing flows before you code
+> - **Auto-reviews** — Carmack-level plan + impl reviews via cross-model RepoPrompt chat
+> - **Beads integration** — optional dependency-aware issue tracking
+> - **~100 tokens startup** — progressive disclosure, full logic loads on-demand
 >
 > Legacy versions still available in [`legacy/`](legacy/) — install with `--legacy` flag.
 
@@ -106,7 +110,7 @@ Legacy commands require `--legacy` flag to install.
 
 ## Related
 
-**[Flow](https://mickel.tech/apps/flow)** — Complete plan → work → review workflow (includes all legacy commands/agents from this repo)
+**[Flow](https://github.com/gmickel/gmickel-claude-marketplace)** — Plan first, work second. 4 commands, 6 agents, 6 skills. ([Website](https://mickel.tech/apps/flow))
 ```bash
 /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
 /plugin install flow
