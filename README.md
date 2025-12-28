@@ -1,19 +1,24 @@
 # claude-code-config
 
-> **⚠️ `/rp-plan-review` and `/rp-impl-review` have moved to [Flow](https://mickel.tech/apps/flow) ([repo](https://github.com/gmickel/gmickel-claude-marketplace))**
+> ## 🚀 Migrated to [Flow](https://mickel.tech/apps/flow)
+>
+> **All commands and agents from this repo are now part of the Flow plugin** — a complete plan → work → review workflow with 4 commands, 5 agents, 5 skills.
 >
 > ```bash
 > /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
 > /plugin install flow
 > ```
 >
-> **Why switch?** Marketplace versions use **progressive disclosure** — context loaded incrementally, saving thousands of tokens per session.
+> **Why switch?**
+> - **Progressive disclosure** — only ~100 tokens at startup, full logic loads on-demand
+> - **More features** — parallel research agents, gap analysis, Beads integration, auto-reviews
+> - **Better chaining** — `/flow:plan` → `/flow:work` handles everything including reviews
 >
-> Legacy versions still available in [`legacy/commands/`](legacy/commands/).
+> Legacy versions still available in [`legacy/`](legacy/) — install with `--legacy` flag.
 
 ---
 
-My Claude Code setup: skills, commands, and agents for fast, high-quality development.
+My Claude Code setup: skills and commands. **For the full workflow, use Flow above.**
 
 ## Installation
 
@@ -32,7 +37,7 @@ git clone git@github.com:gmickel/claude-code-config.git && cd claude-code-config
 ```bash
 curl -fsSL .../install-remote.sh | bash -s -- --skills   # skills only
 curl -fsSL .../install-remote.sh | bash -s -- --commands # commands only
-curl -fsSL .../install-remote.sh | bash -s -- --agents   # agents only
+curl -fsSL .../install-remote.sh | bash -s -- --legacy   # legacy commands/agents
 ```
 
 **Windows (PowerShell):**
@@ -76,16 +81,11 @@ The key: delegate heavy work to external tools with full codebase context, keep 
 
 | Command | Description |
 |---------|-------------|
-| `/rp-plan-review` | Carmack-level plan review via RepoPrompt — **[moved to marketplace](#)** |
-| `/rp-impl-review` | Carmack-level code review of current branch — **[moved to marketplace](#)** |
 | `/pseo` | Programmatic SEO improvements |
+| `/rp-plan-review` | ⚠️ **Legacy** — use [`/flow:plan-review`](#-migrated-to-flow) |
+| `/rp-impl-review` | ⚠️ **Legacy** — use [`/flow:impl-review`](#-migrated-to-flow) |
 
-Review commands use `rp-cli` to build context and send to GPT-5.2 High for deep analysis.
-
-```bash
-/rp-plan-review docs/plan/auth-refactor.md focus on security
-/rp-impl-review focus on auth changes, ignore styling
-```
+Legacy commands require `--legacy` flag to install.
 
 ### Skills
 
@@ -96,47 +96,17 @@ Review commands use `rp-cli` to build context and send to GPT-5.2 High for deep 
 | [sheets-cli](https://github.com/gmickel/sheets-cli) | Google Sheets automation |
 | [outlookctl](https://github.com/gmickel/outlookctl) | Outlook calendar/email automation |
 
-### Agents
-
-| Agent | Description |
-|-------|-------------|
-| rp-explorer | Token-efficient codebase exploration via RepoPrompt codemaps |
-
----
-
-## Command Chaining
-
-Claude Code lets you chain multiple slash commands in a single prompt. Combine these review commands with planning plugins like [Flow](#related) or [compound-engineering](#related) for autonomous plan → review → fix loops:
-
-```bash
-# Plan with research, review via RepoPrompt, iterate until approved
-/flow:plan Add OAuth login then review using /rp-plan-review and fix until approved
-
-# Execute plan, review implementation, iterate until ship-ready
-/flow:work plans/add-oauth-login.md then review using /rp-impl-review and fix until approved
-```
-
-Claude autonomously iterates until done:
-
-```
-Plan Review Complete: SHIP
-
-Plan: plans/add-oauth-login.md (v3-final)
-Issues Addressed: v1 (11 issues), v2 (5 issues) — all resolved
-Ready to implement.
-```
-
 ---
 
 ## Prerequisites
 
-**rp-cli** — Most commands depend on [RepoPrompt CLI](https://repoprompt.com/docs#s=rp-cli&ss=cli-guide), bundled with RepoPrompt.
+**rp-cli** — Legacy commands (`--legacy`) require [RepoPrompt CLI](https://repoprompt.com/docs#s=rp-cli&ss=cli-guide), bundled with RepoPrompt.
 
 ---
 
 ## Related
 
-**[Flow](https://mickel.tech/apps/flow)** — Lightweight plan/work workflow with research agents, pairs well with `/rp-*` commands
+**[Flow](https://mickel.tech/apps/flow)** — Complete plan → work → review workflow (includes all legacy commands/agents from this repo)
 ```bash
 /plugin marketplace add https://github.com/gmickel/gmickel-claude-marketplace
 /plugin install flow

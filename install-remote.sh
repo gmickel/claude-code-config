@@ -1,7 +1,7 @@
 #!/bin/bash
 # Remote installer for Claude Code config
 # Usage: curl -fsSL https://raw.githubusercontent.com/gmickel/claude-code-config/main/install-remote.sh | bash
-# Options: curl ... | bash -s -- [--skills] [--commands] [--agents] [--all]
+# Options: curl ... | bash -s -- [--skills] [--commands] [--legacy] [--all]
 #
 # Requires: curl, jq
 # Optional: GITHUB_TOKEN env var for higher rate limits
@@ -32,26 +32,25 @@ fi
 # Parse args
 INSTALL_SKILLS=false
 INSTALL_COMMANDS=false
-INSTALL_AGENTS=false
+INSTALL_LEGACY=false
 
 if [[ $# -eq 0 ]]; then
   INSTALL_SKILLS=true
   INSTALL_COMMANDS=true
-  INSTALL_AGENTS=true
 else
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --skills)   INSTALL_SKILLS=true ;;
       --commands) INSTALL_COMMANDS=true ;;
-      --agents)   INSTALL_AGENTS=true ;;
+      --legacy)   INSTALL_LEGACY=true ;;
       --all)
         INSTALL_SKILLS=true
         INSTALL_COMMANDS=true
-        INSTALL_AGENTS=true
+        INSTALL_LEGACY=true
         ;;
       *)
         echo "Unknown option: $1"
-        echo "Usage: curl ... | bash -s -- [--skills] [--commands] [--agents] [--all]"
+        echo "Usage: curl ... | bash -s -- [--skills] [--commands] [--legacy] [--all]"
         exit 1
         ;;
     esac
@@ -257,19 +256,33 @@ if [[ "$INSTALL_COMMANDS" == "true" ]]; then
   echo ""
 fi
 
-# Agents
-if [[ "$INSTALL_AGENTS" == "true" ]]; then
-  echo "Agents:"
+# Legacy (commands + agents from legacy/)
+if [[ "$INSTALL_LEGACY" == "true" ]]; then
+  echo "Legacy commands:"
+  mkdir -p "${TARGET_DIR}/commands"
+
+  legacy_cmds_listing=$(fetch_api "legacy/commands") || exit 1
+
+  mapfile -t legacy_cmds < <(echo "$legacy_cmds_listing" | jq -r '.[] | select(.type=="file") | select(.name | endswith(".md")) | .name')
+
+  for cmd in "${legacy_cmds[@]}"; do
+    [[ -z "$cmd" ]] && continue
+    validate_name "$cmd" || continue
+    download_if_missing "${RAW_BASE}/legacy/commands/${cmd}" "${TARGET_DIR}/commands/${cmd}"
+  done
+  echo ""
+
+  echo "Legacy agents:"
   mkdir -p "${TARGET_DIR}/agents"
 
-  agents_listing=$(fetch_api "agents") || exit 1
+  legacy_agents_listing=$(fetch_api "legacy/agents") || exit 1
 
-  mapfile -t agents < <(echo "$agents_listing" | jq -r '.[] | select(.type=="file") | select(.name | endswith(".md")) | .name')
+  mapfile -t legacy_agents < <(echo "$legacy_agents_listing" | jq -r '.[] | select(.type=="file") | select(.name | endswith(".md")) | .name')
 
-  for agent in "${agents[@]}"; do
+  for agent in "${legacy_agents[@]}"; do
     [[ -z "$agent" ]] && continue
     validate_name "$agent" || continue
-    download_if_missing "${RAW_BASE}/agents/${agent}" "${TARGET_DIR}/agents/${agent}"
+    download_if_missing "${RAW_BASE}/legacy/agents/${agent}" "${TARGET_DIR}/agents/${agent}"
   done
   echo ""
 fi
